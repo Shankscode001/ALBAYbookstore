@@ -1,0 +1,33 @@
+CREATE DATABASE ALBAYBookstore CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE books(
+    books_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    author VARCHAR(50),
+    price DECIMAL(8, 2),
+    publication_year INT
+);
+
+
+INSERT INTO BOOKS VALUES(100, 'To Kill a Mockingbird', 'Harper Lee', 10.99, 1960);
+INSERT INTO BOOKS VALUES(102, '1984', 'George Orwell', 9.99, 1949);
+INSERT INTO BOOKS VALUES(103, 'The Great Gatsby', 'F. Scott Fitzgerald', 12.50, 1925);
+
+UPDATE books
+SET price = 11.99
+WHERE books_id = 102;
+
+DELETE from books
+WHERE books_id = 103;
+
+SELECT * FROM books;
+
+SELECT COUNT(*) AS total_rows FROM books;
+
+SELECT * FROM books
+WHERE price = (SELECT MAX(price) FROM books);
+
+ALTER TABLE books
+ADD COLUMN category VARCHAR(50);
+
+
